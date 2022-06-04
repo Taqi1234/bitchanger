@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" 
+			type="org.apache.struts.action.DynaActionForm">
+			 <form-property name="loginId" type="java.lang.String" />
+			  <form-property name="passWord" type="java.lang.String" />
+			   <form-property name="singleSelect" type="java.lang.String" />
+			    <form-property name="fname" type="java.lang.String" />
+			     <form-property name="uname" type="java.lang.String" />
+			      <form-property name="lname" type="java.lang.String" />
+			       <form-property name="email" type="java.lang.String" />
+			        <form-property name="confpass" type="java.lang.String" />
+			        <form-property name="city" type="java.lang.String" />
+			         <form-property name="gender" type="java.lang.String" />
+			          <form-property name="phone" type="java.lang.String" />
+			</form-bean>
+
+	</form-beans>
+	<action-mappings>
+		<!-- 		<action path="/helloWorld"
+			type="com.student.action.StudentAction"
+			name="studentForm"><forward name="success" path="/student.jsp"/><forward name="failure" path="/fail.jsp"/></action> -->
+		<action path="/loginAction"
+			type="com.student.action.LoginAction"
+			input="/login.jsp"
+			name="loginForm" scope="session" parameter="validUser">
+			<forward name="success" path="/success.jsp"/>
+			<forward name="failure" path="/failure.jsp"/>
+		</action>
+		<action path="/registration"
+			type="com.student.action.LoginAction"
+			input="/registration.jsp"
+			parameter="registerUser"
+			name="loginForm" scope="session">
+			<forward name="success" path="/success.jsp"/>
+			<forward name="failure" path="/failure.jsp"/>
+		</action>
+		<action path="/mainpage"
+			type="com.student.action.MainPageAction">
+			<forward name="success" path="/success.jsp"/>
+		</action>
+	</action-mappings>
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
+		<set-property property="pathnames"
+	value="/WEB-INF/validator-rules.xml,/WEB-INF/validator-user.xml"/>
+	</plug-in>
+	<plug-in className="com.student.util.HibernatePlugin">
+		<set-property property="path" value="/hibernate.cfg.xml"/>
+	</plug-in>
+</struts-config>
