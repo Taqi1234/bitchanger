@@ -13,6 +13,8 @@ import org.apache.struts.actions.DispatchAction;
 
 public class LanguageSelectAction extends DispatchAction{
 	
+
+
 	public ActionForward chinese(ActionMapping mapping,ActionForm form,
 			HttpServletRequest request,HttpServletResponse response) 
 	throws Exception {
